@@ -1,20 +1,38 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="galeria">
+  <main class="pagina">
+    <header class="cabecera">
+      <div>
+        <h1>Adopta</h1>
+        <p>{{ disponibles() }} peluditos buscando casa</p>
+      </div>
+      <span class="corazon" aria-hidden="true">♡</span>
+    </header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <ion-segment [value]="filtro()" class="filtros" aria-label="Filtrar mascotas">
+      <ion-segment-button value="todos" (click)="filtro.set('todos')"><ion-label>Todos</ion-label></ion-segment-button>
+      <ion-segment-button value="disponibles" (click)="filtro.set('disponibles')"><ion-label>Disponibles</ion-label></ion-segment-button>
+      <ion-segment-button value="adoptados" (click)="filtro.set('adoptados')"><ion-label>Adoptados</ion-label></ion-segment-button>
+    </ion-segment>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    <div class="cuadricula">
+      @for (animal of filtrados(); track animal.id) {
+        <ion-card class="mascota" [routerLink]="['/adopta', animal.id]" [attr.aria-label]="'Ver ficha de ' + animal.nombre">
+          <div class="foto">
+            <img [src]="animal.foto" [alt]="'Foto de ' + animal.nombre" />
+            <ion-badge [class.adoptado]="animal.adoptado">{{ animal.adoptado ? '✓ Adoptado' : 'Disponible' }}</ion-badge>
+          </div>
+          <div class="resumen">
+            <strong>{{ animal.nombre }}</strong>
+            <span>{{ animal.raza }} · {{ edad(animal.fechaNacimiento) }} años</span>
+          </div>
+        </ion-card>
+      } @empty {
+        <p class="vacio">No hay mascotas en esta categoría.</p>
+      }
+    </div>
+
+  </main>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button routerLink="/new-pet" aria-label="Agregar mascota">+</ion-fab-button>
+  </ion-fab>
 </ion-content>

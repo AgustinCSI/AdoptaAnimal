@@ -1,0 +1,22 @@
+.pagina { max-width: 680px; margin: auto; padding: 24px 22px 48px; }
+.navegacion { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+.navegacion a { color: #a585ff; text-decoration: none; font-weight: 700; }
+.navegacion span { color: #9c7cfc; font-size: 27px; }
+.imagen { position: relative; height: clamp(230px, 45vw, 390px); overflow: hidden; border-radius: 20px; }
+.imagen ion-img { width: 100%; height: 100%; }
+.imagen ion-img::part(image) { object-fit: cover; }
+.imagen ion-badge { position: absolute; top: 14px; right: 14px; --background: #30ab73; border-radius: 20px; }
+h1 { margin: 18px 0 4px; font-size: 30px; font-weight: 800; }
+.subtitulo { margin: 0; color: #aaa3c5; }
+.etiquetas { display: flex; flex-wrap: wrap; gap: 6px; margin: 18px 0; }
+ion-chip { margin: 0; --background: #2a253c; --color: #eee9ff; border: 1px solid #403755; text-transform: capitalize; }
+.datos { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid #403755; border-radius: 16px; overflow: hidden; }
+.datos div { display: flex; flex-direction: column; gap: 5px; padding: 12px; }
+.datos div + div { border-left: 1px solid #403755; }
+.datos small { color: #aba4c4; font-size: 10px; }
+.datos strong { text-transform: capitalize; font-size: 14px; }
+.descripcion { color: #b7b0cd; line-height: 1.55; margin: 20px 0; }
+.accion { --background: #7955f2; --border-radius: 14px; min-height: 48px; text-transform: none; font-weight: 700; }
+.accion.button-disabled { --background: #191622; --color: #b9addd; opacity: 1; }
+.no-encontrado { text-align: center; padding-top: 60px; }
+.no-encontrado p { color: #aaa3c5; }

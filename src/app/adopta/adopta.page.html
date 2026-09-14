@@ -1,0 +1,43 @@
+<ion-content>
+  <main class="pagina">
+    <nav class="navegacion">
+      <a routerLink="/home">‹ Adopta</a>
+      <span aria-hidden="true">♡</span>
+    </nav>
+
+    @if (animal(); as mascota) {
+      <div class="imagen">
+        <ion-img [src]="mascota.foto" [alt]="'Foto de ' + mascota.nombre"></ion-img>
+        @if (mascota.adoptado) { <ion-badge>✓ Adoptado</ion-badge> }
+      </div>
+      <h1>{{ mascota.nombre }}</h1>
+      <p class="subtitulo">{{ mascota.raza }} · {{ mascota.genero }} · {{ edad(mascota.fechaNacimiento) }} años</p>
+
+      <div class="etiquetas">
+        @if (mascota.vacunada) { <ion-chip>✓ Vacunada</ion-chip> }
+        <ion-chip>{{ mascota['tamaño'] }}</ion-chip>
+        <ion-chip>{{ mascota.tipo }}</ion-chip>
+      </div>
+
+      <div class="datos">
+        <div><small>SEXO</small><strong>{{ mascota.genero }}</strong></div>
+        <div><small>TAMAÑO</small><strong>{{ mascota['tamaño'] }}</strong></div>
+        <div><small>EDAD</small><strong>{{ edad(mascota.fechaNacimiento) }} años</strong></div>
+      </div>
+
+      <p class="descripcion">{{ mascota.descripcion || 'Esta mascota busca una familia que la quiera.' }}</p>
+
+      @if (mascota.adoptado) {
+        <ion-button expand="block" disabled class="accion">✓ Ya tiene familia</ion-button>
+      } @else {
+        <ion-button expand="block" class="accion" (click)="marcarAdoptado()">Adoptar a {{ mascota.nombre }}</ion-button>
+      }
+    } @else {
+      <div class="no-encontrado">
+        <h1>Mascota no encontrada</h1>
+        <p>Revisa el enlace o vuelve a la galería.</p>
+        <ion-button routerLink="/home">Volver a la galería</ion-button>
+      </div>
+    }
+  </main>
+</ion-content>

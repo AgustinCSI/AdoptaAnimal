@@ -1,0 +1,59 @@
+<ion-content>
+  <main class="pagina">
+    <nav class="navegacion">
+      <a routerLink="/home">Cancelar</a>
+      <strong>Nuevo perrito</strong>
+      <span></span>
+    </nav>
+
+    <form (ngSubmit)="guardar()">
+      <label class="etiqueta" for="foto">FOTO (URL)</label>
+      <ion-input id="foto" name="foto" type="url" placeholder="https://place-puppy.com/300x300" [(ngModel)]="foto"></ion-input>
+      <p class="ayuda">Pega el enlace de una imagen para verla aquí.</p>
+      @if (fotoValida) {
+        <img class="vista-previa" [src]="foto" alt="Vista previa de la mascota" />
+      }
+
+      <label class="etiqueta" for="nombre">NOMBRE</label>
+      <ion-input id="nombre" name="nombre" placeholder="Ej. Rocky" [(ngModel)]="nombre"></ion-input>
+
+      <label class="etiqueta">TIPO</label>
+      <ion-segment name="tipo" [value]="tipo" aria-label="Tipo de mascota">
+        <ion-segment-button value="perro" (click)="tipo = 'perro'"><ion-label>Perro</ion-label></ion-segment-button>
+        <ion-segment-button value="gato" (click)="tipo = 'gato'"><ion-label>Gato</ion-label></ion-segment-button>
+        <ion-segment-button value="otro" (click)="tipo = 'otro'"><ion-label>Otro</ion-label></ion-segment-button>
+      </ion-segment>
+
+      <label class="etiqueta" for="edad">EDAD (AÑOS)</label>
+      <ion-input id="edad" name="edad" type="number" min="0" max="30" placeholder="Ej. 1" [(ngModel)]="edad"></ion-input>
+
+      <label class="etiqueta" for="raza">RAZA</label>
+      <ion-input id="raza" name="raza" placeholder="Ej. Labrador" [(ngModel)]="raza"></ion-input>
+
+      <div class="fila">
+        <div>
+          <label class="etiqueta" for="genero">SEXO</label>
+          <ion-select id="genero" name="genero" interface="popover" [(ngModel)]="genero">
+            <ion-select-option value="hembra">Hembra</ion-select-option>
+            <ion-select-option value="macho">Macho</ion-select-option>
+          </ion-select>
+        </div>
+        <div>
+          <label class="etiqueta" for="tamano">TAMAÑO</label>
+          <ion-select id="tamano" name="tamano" interface="popover" [(ngModel)]="tamano">
+            <ion-select-option value="pequeño">Pequeño</ion-select-option>
+            <ion-select-option value="mediano">Mediano</ion-select-option>
+            <ion-select-option value="grande">Grande</ion-select-option>
+          </ion-select>
+        </div>
+      </div>
+
+      <label class="etiqueta" for="descripcion">DESCRIPCIÓN</label>
+      <ion-textarea id="descripcion" name="descripcion" placeholder="Cuéntanos cómo es..." rows="3" [(ngModel)]="descripcion"></ion-textarea>
+      <ion-toggle name="vacunada" [(ngModel)]="vacunada" labelPlacement="start">Vacunada</ion-toggle>
+
+      @if (error) { <p class="error" role="alert">{{ error }}</p> }
+      <ion-button class="guardar" type="submit" expand="block">Guardar mascota</ion-button>
+    </form>
+  </main>
+</ion-content>

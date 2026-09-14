@@ -1,15 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
+import { AdoptaPage } from './adopta.page';
 
-import { HomePage } from './home.page';
+describe('AdoptaPage', () => {
+  let component: AdoptaPage;
+  let fixture: ComponentFixture<AdoptaPage>;
 
-describe('HomePage', () => {
-  let component: HomePage;
-  let fixture: ComponentFixture<HomePage>;
-
-  beforeEach(async () => {
+  beforeEach(() => {
     TestBed.configureTestingModule({ providers: [provideRouter([])] });
-    fixture = TestBed.createComponent(HomePage);
+    fixture = TestBed.createComponent(AdoptaPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

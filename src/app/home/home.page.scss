@@ -1,27 +1,20 @@
-#container {
-  text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
-}
+.pagina { max-width: 680px; margin: auto; padding: 30px 22px 100px; }
+.cabecera { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+h1 { margin: 0 0 4px; font-size: 30px; font-weight: 800; }
+.cabecera p { margin: 0; color: #a9a4c4; font-size: 14px; }
+.corazon { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: #302944; color: #9270ff; font-size: 27px; }
+.filtros { --background: #171524; margin-bottom: 18px; border-radius: 18px; }
+.filtros ion-segment-button { --color: #afa9cc; --color-checked: #a98cff; --indicator-color: #2a2442; min-height: 42px; font-size: 12px; text-transform: none; }
+.cuadricula { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.mascota { margin: 0; border: 1px solid #38314e; border-radius: 18px; background: #252136; box-shadow: none; cursor: pointer; overflow: hidden; }
+.mascota:focus-visible { outline: 2px solid #9b7cff; }
+.foto { position: relative; aspect-ratio: 1.2; overflow: hidden; }
+.foto img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.foto ion-badge { position: absolute; left: 9px; top: 9px; --background: #31294b; --color: #eee6ff; border-radius: 20px; font-size: 10px; }
+.foto ion-badge.adoptado { --background: #31a974; --color: white; }
+.resumen { display: flex; flex-direction: column; gap: 2px; padding: 10px 12px 12px; }
+.resumen strong { color: white; font-size: 16px; }
+.resumen span { color: #ada6c8; font-size: 12px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.vacio { grid-column: 1 / -1; color: #ada6c8; text-align: center; padding: 40px 0; }
+ion-fab { position: fixed; right: max(22px, calc((100vw - 680px) / 2 + 22px)); bottom: 24px; }
+ion-fab-button { --background: #7955f2; --box-shadow: 0 10px 25px #0d0a1d80; font-size: 32px; }
